@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Matchers.contains;
@@ -24,33 +25,8 @@ public class ApplicationTest {
         Application application = new Application(out);
         application.start();
 
-        verify(out).print("Welcome!");
+        verify(out).println("Welcome!");
     }
 
-    @Test
-    public void shouldDisplayLibraryBooksWhenContainsMultipleBooks(){
-        PrintStream out = mock(PrintStream.class);
-        Library library = new Library();
 
-        Application application = new Application(out);
-        application.printBooks(library);
-
-        verify(out).println(contains("Bill\nTDD\nRefactoring"));
-    }
-
-//    @Test
-//    public void shouldNotDisplayLibraryBooksWhenLibraryIsEmpty() {
-//
-//    }
-
-    @Test
-    public void shouldDisplayBookDetailsWhenListingLibraryBooks() {
-        PrintStream out = mock(PrintStream.class);
-        Library library = new Library();
-
-        Application application = new Application(out);
-        application.printBooks(library);
-
-        verify(out).println(contains("Bill\tDr. Bill\t2001"));
-    }
 }

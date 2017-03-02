@@ -1,5 +1,7 @@
 import java.awt.datatransfer.StringSelection;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -7,12 +9,20 @@ import java.util.List;
  */
 public class Library {
 
-    private List<Book> books = new ArrayList<Book>();
+    private List<String> books;
+    private PrintStream out;
 
-    public List<Book> getBooks() {
-        books.add(new Book("Bill", "Dr. Bill", 2001));
-        books.add(new Book("TDD", "Some guy", 1993));
-        books.add(new Book("Refactoring", "Some lady", 1659));
-        return books;
+    public Library(PrintStream out) {
+        this.out = out;
+        this.books = new ArrayList<String>(Arrays.asList("Bill", "TDD", "Refactoring"));
+    }
+
+    public void listBooks(){
+        String libraryBooks = "";
+        for (String book : books) {
+            libraryBooks += book + "\n";
+        }
+
+        out.println(libraryBooks);
     }
 }

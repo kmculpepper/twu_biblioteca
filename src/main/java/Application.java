@@ -6,23 +6,18 @@ import java.io.PrintStream;
 public class Application {
 
     private PrintStream out;
+    private Library library;
 
     public Application(PrintStream out) {
 
         this.out = out;
+        this.library = new Library(out);
     }
 
     public void start() {
-        out.print("Welcome!");
+        out.println("Welcome!");
+        library.listBooks();
     }
 
-    public void printBooks(Library library) {
-        String books = "";
-        for (Book book : library.getBooks()) {
-            books += book + "\n";
-        }
-
-        out.println(books);
-    }
 
 }

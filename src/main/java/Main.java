@@ -5,8 +5,6 @@ public class Main {
 
     public static void main (String [] args){
         Application application = new Application(System.out);
-        Library library = new Library();
         application.start();
-        application.printBooks(library);
     }
 }
