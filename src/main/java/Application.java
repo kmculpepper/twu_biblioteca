@@ -11,7 +11,7 @@ public class Application {
     public Application(PrintStream out) {
 
         this.out = out;
-        this.library = new Library(out);
+        this.library = new Library();
     }
 
     public void start() {

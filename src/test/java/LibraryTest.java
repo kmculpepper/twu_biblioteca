@@ -21,10 +21,18 @@ public class LibraryTest {
 
     @Test
     public void shouldDisplayAListOfBooks() {
-        PrintStream out = mock(PrintStream.class);
         Library library = new Library(out);
         library.listBooks();
 
         verify(out).println(contains("Bill\nTDD\nRefactoring"));
     }
+
+//    @Test
+//    public void shouldDisplayBookDetailsWhenListingBooks() {
+//        PrintStream out = mock(PrintStream.class);
+//        Library library = new Library(out);
+//        library.listBooks();
+//
+//        verify(out).println(contains("Bill\tDr. Bill\t2001"));
+//    }
 }
