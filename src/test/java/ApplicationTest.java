@@ -13,19 +13,31 @@ import static org.mockito.Matchers.contains;
  */
 public class ApplicationTest {
 
+
+    private PrintStream out;
+    private Application application;
+    private Library lib;
+
     @Before
     public void setUp() {
+        out = mock(PrintStream.class);
+        lib = mock(Library.class);
 
+        application = new Application(out, lib);
     }
 
     @Test
     public void shouldDisplayWelcomeMessageOnStart() {
-        PrintStream out = mock(PrintStream.class);
-
-        Application application = new Application(out);
         application.start();
 
         verify(out).println("Welcome!");
+    }
+
+    @Test
+    public void shouldDisplayListBooksOptionWhenMenuIsDisplayed(){
+        application.selectMenuOption();
+
+        verify(out).println(contains("List Books"));
     }
 
 
