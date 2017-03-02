@@ -17,6 +17,6 @@ public class Book {
     }
 
     public void showDetails() {
-
+        out.println(title + "\t" + author + "\t" + year);
     }
 }

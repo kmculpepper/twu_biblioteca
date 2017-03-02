@@ -10,8 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.contains;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by MarcoBarragan on 3/1/17.
@@ -21,10 +20,15 @@ public class LibraryTest {
 
     @Test
     public void shouldDisplayAListOfBooks() {
-        Library library = new Library(out);
+        ArrayList<Book> books = new ArrayList<>();
+        Book book = mock(Book.class);
+        books.add(book);
+        books.add(book);
+        Library library = new Library(books);
+
         library.listBooks();
 
-        verify(out).println(contains("Bill\nTDD\nRefactoring"));
+        verify(book, times(2)).showDetails();
     }
 
 //    @Test
